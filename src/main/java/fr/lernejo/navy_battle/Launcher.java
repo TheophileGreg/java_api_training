@@ -1,5 +1,7 @@
 package fr.lernejo.navy_battle;
 
+import com.sun.net.httpserver.HttpServer;
+
 import java.io.IOException;
 
 public class Launcher {
@@ -9,8 +11,10 @@ public class Launcher {
             System.exit(-1);
         }
         int port = Integer.parseInt(args[0]);
+        Server mainServer;
+        mainServer = new Server();
         try {
-            new Server().startServer(port);
+            mainServer.startServer(port);
         } catch (IOException e) {
             e.printStackTrace();
         }
