@@ -24,9 +24,9 @@ public class Server {
 //        Server.server.createContext("/api/game/start", Server::startGameHandler);
 //    }
 
-    private static void startGameHandler(HttpExchange httpExchange) {
-
-    }
+//    private static void startGameHandler(HttpExchange httpExchange) {
+//
+//    }
 
     public void stopServer() {
         Server.server.stop(0);
