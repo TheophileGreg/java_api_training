@@ -16,7 +16,7 @@ public class Server{
         server.start();
 }
 static void pingHandler(HttpExchange exchange) throws IOException{
-    String body = "Hello les tdc";
+    String body = "OK";
     exchange.sendResponseHeaders(200, body.length());
     try (OutputStream os = exchange.getResponseBody()) { // (1)
         os.write(body.getBytes());
