@@ -23,9 +23,11 @@ public class Server {
 //    public void startGame(){
 //        Server.server.createContext("/api/game/start", Server::startGameHandler);
 //    }
-
-//    private static void startGameHandler(HttpExchange httpExchange) {
 //
+//    private static void startGameHandler(HttpExchange httpExchange) throws IOException {
+//String body = "test";
+//        httpExchange.sendResponseHeaders(200,5 );
+//        httpExchange.getResponseBody().write(body.getBytes());
 //    }
 
     public void stopServer() {
