@@ -20,9 +20,9 @@ public class Server {
         server.start();
     }
 
-    public void startGame(){
-        Server.server.createContext("/api/game/start", Server::startGameHandler);
-    }
+//    public void startGame(){
+//        Server.server.createContext("/api/game/start", Server::startGameHandler);
+//    }
 
     private static void startGameHandler(HttpExchange httpExchange) {
 
