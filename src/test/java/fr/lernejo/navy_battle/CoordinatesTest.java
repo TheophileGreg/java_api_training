@@ -14,12 +14,12 @@ class CoordinatesTest {
     }
 
     @Test
-    void getX() {
+    void testgetX() {
         assertEquals(3, coordinatesTest.getX());
     }
 
     @Test
-    void getY() {
+    void testgetY() {
         assertEquals(4, coordinatesTest.getY());
     }
 

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ServerTest {
     @Test
-    public void startServerTest() throws IOException {
+    public void testStartServer() throws IOException {
         new Server().startServer(9876);
         String url = "http://localhost:9876/ping";
         String source = "";
@@ -32,7 +32,7 @@ public class ServerTest {
     }
 
     @Test
-    public void stopServerTest() throws IOException {
+    public void testStopServer() throws IOException {
         Server server = new Server();
         server.startServer(9999);
         server.stopServer();
