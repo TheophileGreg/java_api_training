@@ -15,7 +15,12 @@ public class Launcher {
 //            e.printStackTrace();
 //        }
         Game mainBoard = new Game();
-        System.out.print(mainBoard.fire("TU"));
+        System.out.print(mainBoard.fire(args[0]));
+        System.out.print(mainBoard.getStatus());
+        System.out.print(args);
+        System.out.print(mainBoard);
+        System.out.print(mainBoard.fire(args[1]));
+        System.out.print(mainBoard.getStatus());
         System.out.print(args);
         System.out.print(mainBoard);
     }

@@ -5,22 +5,48 @@ import java.util.List;
 
 public class Board {
 
-    private List<Cell> board = new ArrayList<>();
+    private List<Cell> listCells = new ArrayList<>();
 
-    Board(){
+    Board(List<Boat> boats){
+        List<Coordinates> boatsCoordinates = new ArrayList<>();
+        for (Boat b: boats) {
+            for (Cell c: b.getCells()) {
+                boatsCoordinates.add(c.coordinateCell);
+            }
+        }
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                Cell actCell = new Cell (new Coordinates(i, j), i==j);
-                board.add(actCell);
+                Coordinates actCoordinates = new Coordinates(i, j);
+                if (boatsCoordinates.contains(actCoordinates))
+                 {
+                     for (Boat b: boats
+                     ) {
+                         for (Cell c: b.getCells()
+                         ) {
+                             if (actCoordinates.equals(c.coordinateCell)) {
+                                 listCells.add(c);
+                             }
+                         }
+                     }
+            } else {
+                    Cell actCell = new Cell (actCoordinates, null);
+                    listCells.add(actCell);
+                }
+
             }
         }
     }
 
-    public List<Cell> getBoard() {
-        return board;
+    public List<Cell> getListCells() {
+        return listCells;
     }
 
     public Cell getCell(String coordinatesAlpha){
-        return board.get(0);
+        for (Cell e : listCells) {
+            if (e.coordinateCell.toString().equals(coordinatesAlpha) ){
+                return e;
+            }
+        }
+        return null;
     }
 }
