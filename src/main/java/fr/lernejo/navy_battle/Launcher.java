@@ -1,7 +1,5 @@
 package fr.lernejo.navy_battle;
 
-import java.io.IOException;
-
 public class Launcher {
 
     public static void main(String[] args) {
@@ -16,8 +14,8 @@ public class Launcher {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        GameBoard mainBoard = new GameBoard();
-        mainBoard.hitACell(new Coordinates(3,3));
+        Game mainBoard = new Game();
+        System.out.print(mainBoard.fire("TU"));
         System.out.print(args);
         System.out.print(mainBoard);
     }
