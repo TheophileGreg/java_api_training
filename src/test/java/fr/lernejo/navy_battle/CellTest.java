@@ -3,36 +3,87 @@ package fr.lernejo.navy_battle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CellTest {
-    Cell cell_with_boat_test;
-    Cell cell_without_boat_test;
+    Cell cellWithBoatTest;
+    Cell cellWithoutBoatTest;
+    List<Cell> cellsBoats1 = new ArrayList<>();
+    Boat boatTest1;
 
     @BeforeEach
     void setUp() {
-        cell_with_boat_test = new Cell(new Coordinates(2,3), true);
-        cell_without_boat_test= new Cell(new Coordinates(3,4), false);
+        boatTest1 = new Boat(cellsBoats1);
+        cellsBoats1.add(new Cell(new Coordinates(0,1), boatTest1));
+        cellsBoats1.add(new Cell(new Coordinates(0,2), boatTest1));
+        cellWithBoatTest = new Cell(new Coordinates(2,3), boatTest1);
+        cellWithoutBoatTest = new Cell(new Coordinates(3,4), null);
     }
 
     @Test
     void testHit() {
-        boolean shouldBeABoat = cell_with_boat_test.hit();
-        boolean shouldnotBeABoat = cell_without_boat_test.hit();
+        boolean shouldBeABoat = cellWithBoatTest.hit();
+        boolean shouldnotBeABoat = cellWithoutBoatTest.hit();
         assertEquals(true, shouldBeABoat);
         assertEquals(false, shouldnotBeABoat);
     }
 
     @Test
     void testIsVisible(){
-        cell_without_boat_test.hit();
-        assertEquals(true, cell_without_boat_test.isVisible());
-        assertEquals(false, cell_with_boat_test.isVisible());
+        cellWithoutBoatTest.hit();
+        assertEquals(true, cellWithoutBoatTest.isVisible());
+        assertEquals(false, cellWithBoatTest.isVisible());
     }
 
     @Test
     void testIsBoat(){
-        assertEquals(true, cell_with_boat_test.isBoat());
-        assertEquals(false, cell_without_boat_test.isBoat());
+        assertEquals(true, cellWithBoatTest.isBoat());
+        assertEquals(false, cellWithoutBoatTest.isBoat());
+    }
+
+    @Test
+    void testGetBoat() {
+        assertEquals(cellWithBoatTest.getBoat(), boatTest1);
+    }
+
+    @Test
+    void testGetCellStatus() {
+        assertEquals(cellWithBoatTest.getCellStatus(), CellStatus.hidden);
+        assertEquals(cellWithoutBoatTest.getCellStatus(), CellStatus.hidden);
+
+        cellWithBoatTest.hit();
+        cellWithoutBoatTest.hit();
+
+        assertEquals(cellWithBoatTest.getCellStatus(), CellStatus.hitted);
+        assertEquals(cellWithoutBoatTest.getCellStatus(), CellStatus.hitted);
+    }
+
+    @Test
+    void testEquals() {
+        Cell cellWithBoatTest1 = new Cell(new Coordinates(2,3), boatTest1);
+        Cell cellWithBoatTest2 = new Cell(new Coordinates(2,3), null);
+        Cell cellWithBoatTest3 = new Cell(new Coordinates(4,3), boatTest1);
+        Cell cellWithBoatTest4 = new Cell(new Coordinates(4,3), null);
+        assertEquals(cellWithBoatTest, cellWithBoatTest1);
+        assertNotEquals(cellWithBoatTest, cellWithBoatTest2);
+
+        assertNotEquals(cellWithBoatTest, cellWithBoatTest3);
+        assertNotEquals(cellWithoutBoatTest, cellWithBoatTest4);
+    }
+
+    @Test
+    void testHashCode() {
+        Cell cellWithBoatTest1 = new Cell(new Coordinates(2,3), boatTest1);
+        Cell cellWithBoatTest2 = new Cell(new Coordinates(2,3), null);
+        Cell cellWithBoatTest3 = new Cell(new Coordinates(4,3), boatTest1);
+        Cell cellWithBoatTest4 = new Cell(new Coordinates(4,3), null);
+        assertEquals(cellWithBoatTest.hashCode(), cellWithBoatTest1.hashCode());
+        assertNotEquals(cellWithBoatTest.hashCode(), cellWithBoatTest2.hashCode());
+
+        assertNotEquals(cellWithBoatTest.hashCode(), cellWithBoatTest3.hashCode());
+        assertNotEquals(cellWithoutBoatTest.hashCode(), cellWithBoatTest4.hashCode());
     }
 }
