@@ -2,34 +2,34 @@ package fr.lernejo.navy_battle;
 
 import java.util.Objects;
 
-public class Cell {
+public abstract class Cell {
     public Coordinates coordinateCell;
     private CellStatus cellStatus;
-    private Boat boat;
+    private boolean isBoat;
 
-    Cell(Coordinates coordinates, Boat boatArgs){
+    Cell(Coordinates coordinates, boolean boatBool){
         coordinateCell = coordinates;
         cellStatus = CellStatus.hidden;
-        boat = boatArgs;
+        isBoat = boatBool;
     }
 
     public boolean hit(){
         cellStatus = CellStatus.hitted;
-        if (boat != null){
-           return true; //Boat hit
+        if (isBoat){
+           return true;
         }
         return false;
     }
 
-    public boolean isBoat(){
-        if (boat != null){
-            return true; //Boat hit
+    public boolean getIsBoat() {
+        if (isBoat) {
+            return true;
         }
         return false;
     }
 
-    public Boat getBoat() {
-        return boat;
+    public void setIsBoat(boolean boat) {
+        isBoat = boat;
     }
 
     public boolean isVisible(){
@@ -45,11 +45,11 @@ public class Cell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cell cell = (Cell) o;
-        return coordinateCell.equals(cell.coordinateCell) && cellStatus == cell.cellStatus && Objects.equals(boat, cell.boat);
+        return coordinateCell.equals(cell.coordinateCell) && cellStatus == cell.cellStatus && Objects.equals(isBoat, cell.isBoat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(coordinateCell, cellStatus, boat);
+        return Objects.hash(coordinateCell, cellStatus, isBoat);
     }
 }

@@ -11,24 +11,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoardTest {
 
     private List<Boat> boatsTest = new ArrayList<>();
-    private Board boardtest;
+    private OwnBoard boardtest;
 
     @BeforeEach
     void setUp() {
-        List<Cell> cellsBoats1 = new ArrayList<>();
+        List<OwnCell> cellsBoats1 = new ArrayList<>();
         Boat boatTest1 = new Boat(cellsBoats1);
-        cellsBoats1.add(new Cell(new Coordinates(0,1), boatTest1));
-        cellsBoats1.add(new Cell(new Coordinates(0,2), boatTest1));
+        cellsBoats1.add(new OwnCell(new Coordinates(0,1), true, boatTest1));
+        cellsBoats1.add(new OwnCell(new Coordinates(0,2), true, boatTest1));
 
-        List<Cell> cellsBoats2 = new ArrayList<>();
+        List<OwnCell> cellsBoats2 = new ArrayList<>();
         Boat boatTest2 = new Boat(cellsBoats2);
-        cellsBoats2.add(new Cell(new Coordinates(4,1), boatTest2));
-        cellsBoats2.add(new Cell(new Coordinates(4,2), boatTest2));
+        cellsBoats2.add(new OwnCell(new Coordinates(4,1), true, boatTest2));
+        cellsBoats2.add(new OwnCell(new Coordinates(4,2), true, boatTest2));
 
         boatsTest.add(boatTest1);
         boatsTest.add(boatTest2);
 
-        boardtest = new Board(boatsTest);
+        boardtest = new OwnBoard(boatsTest);
     }
 
     @Test
@@ -55,7 +55,7 @@ class BoardTest {
                         }
                     }
                 } else {
-                    Cell actCell = new Cell (actCoordinates, null);
+                    Cell actCell = new OwnCell (actCoordinates, false, null);
                     listCells.add(actCell);
                 }
 
@@ -67,7 +67,7 @@ class BoardTest {
     @Test
     void testGetCell() {
         Coordinates coordinatesTest  = new Coordinates(1,1);
-        Cell cellTest = new Cell(coordinatesTest, null);
+        Cell cellTest = new OwnCell(coordinatesTest, false,null);
         assertEquals(boardtest.getCell("B2"), cellTest);
     }
 

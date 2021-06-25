@@ -3,9 +3,9 @@ package fr.lernejo.navy_battle;
 import java.util.List;
 
 public class Boat {
-    private List<Cell> cells;
+    private List<OwnCell> cells;
 
-    Boat(List<Cell> cellsArgs){
+    Boat(List<OwnCell> cellsArgs){
         cells = cellsArgs;
     }
 
@@ -25,7 +25,7 @@ public class Boat {
         }
     }
 
-    public List<Cell> getCells() {
+    public List<OwnCell> getCells() {
         return cells;
     }
 }
