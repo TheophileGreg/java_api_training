@@ -16,12 +16,12 @@ class BoardTest {
     @BeforeEach
     void setUp() {
         List<Cell> cellsBoats1 = new ArrayList<>();
-        Boat boatTest1 = new Boat(cellsBoats1);
+        Boat boatTest1 = new Boat(cellsBoats1, 1);
         cellsBoats1.add(new Cell(new Coordinates(0,1), boatTest1));
         cellsBoats1.add(new Cell(new Coordinates(0,2), boatTest1));
 
         List<Cell> cellsBoats2 = new ArrayList<>();
-        Boat boatTest2 = new Boat(cellsBoats2);
+        Boat boatTest2 = new Boat(cellsBoats2, 2);
         cellsBoats2.add(new Cell(new Coordinates(4,1), boatTest2));
         cellsBoats2.add(new Cell(new Coordinates(4,2), boatTest2));
 

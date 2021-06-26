@@ -15,7 +15,7 @@ class BoatTest {
 
     @BeforeEach
     void setUp() {
-        boatTest1 = new Boat(cellsBoats1);
+        boatTest1 = new Boat(cellsBoats1, 1);
         cellsBoats1.add(new Cell(new Coordinates(0,1), boatTest1));
         cellsBoats1.add(new Cell(new Coordinates(0,2), boatTest1));
     }

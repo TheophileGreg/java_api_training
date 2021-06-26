@@ -5,20 +5,19 @@ import java.util.List;
 
 public class Game {
     private Board myBoard;
-    private Board opponentBoard;
     private List<Boat> boats = new ArrayList<>();
 
     public Game(){
         //creer ses boats
         List<Cell> cellsBoats1 = new ArrayList<>();
-        Boat boat1 = new Boat(cellsBoats1);
+        Boat boat1 = new Boat(cellsBoats1, 1);
         cellsBoats1.add(new Cell(new Coordinates(0,1), boat1));
         cellsBoats1.add(new Cell(new Coordinates(0,2), boat1));
 
         List<Cell> cellsBoats2 = new ArrayList<>();
-        Boat boat2 = new Boat(cellsBoats2);
-        cellsBoats2.add(new Cell(new Coordinates(4,1), boat1));
-        cellsBoats2.add(new Cell(new Coordinates(4,2), boat1));
+        Boat boat2 = new Boat(cellsBoats2, 2);
+        cellsBoats2.add(new Cell(new Coordinates(4,1), boat2));
+        cellsBoats2.add(new Cell(new Coordinates(4,2), boat2));
 
         boats.add(boat1);
         boats.add(boat2);
@@ -30,7 +29,8 @@ public class Game {
     public FireResult fire(String coordinatesAlpha){
         Cell cellToFire = myBoard.getCell(coordinatesAlpha);
         if(cellToFire.hit()){
-            if (cellToFire.getBoat().checkBoat() == BoatStatus.sunked){
+            Boat boatFire = cellToFire.getBoat();
+            if (boatFire.checkBoat() == BoatStatus.sunked){
                 return FireResult.sunk;
             }
             return FireResult.hit;

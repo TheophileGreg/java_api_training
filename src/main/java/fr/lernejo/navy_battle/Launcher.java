@@ -1,5 +1,7 @@
 package fr.lernejo.navy_battle;
 
+import java.util.Scanner;
+
 public class Launcher {
 
     public static void main(String[] args) {
@@ -15,13 +17,16 @@ public class Launcher {
 //            e.printStackTrace();
 //        }
         Game mainBoard = new Game();
-        System.out.print(mainBoard.fire(args[0]));
-        System.out.print(mainBoard.getStatus());
-        System.out.print(args);
-        System.out.print(mainBoard);
-        System.out.print(mainBoard.fire(args[1]));
-        System.out.print(mainBoard.getStatus());
-        System.out.print(args);
-        System.out.print(mainBoard);
+        while (mainBoard.getStatus() == GameStatus.onGoing)
+        {
+            Scanner keyboard = new Scanner(System.in);
+            String in = keyboard.next();
+            System.out.print("\n Fire return : " + mainBoard.fire(in));
+            System.out.print("\n Game status : " + mainBoard.getStatus());
+            System.out.print("\n" + mainBoard);
+
+        }
+
+
     }
 }

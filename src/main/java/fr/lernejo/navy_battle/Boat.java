@@ -3,9 +3,11 @@ package fr.lernejo.navy_battle;
 import java.util.List;
 
 public class Boat {
-    private List<Cell> cells;
+    private final int idBoat;
+    private final List<Cell> cells;
 
-    Boat(List<Cell> cellsArgs){
+    Boat(List<Cell> cellsArgs, int idBoatArgs){
+        idBoat = idBoatArgs;
         cells = cellsArgs;
     }
 
@@ -27,5 +29,10 @@ public class Boat {
 
     public List<Cell> getCells() {
         return cells;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(idBoat) ;
     }
 }

@@ -5,31 +5,34 @@ import java.util.Objects;
 public class Cell {
     public Coordinates coordinateCell;
     private CellStatus cellStatus;
+    private boolean isBoat;
     private Boat boat;
 
     Cell(Coordinates coordinates, Boat boatArgs){
         coordinateCell = coordinates;
         cellStatus = CellStatus.hidden;
         boat = boatArgs;
+        isBoat = boatArgs != null;
     }
 
     public boolean hit(){
         cellStatus = CellStatus.hitted;
-        if (boat != null){
+        if (isBoat){
            return true; //Boat hit
         }
         return false;
     }
 
     public boolean isBoat(){
-        if (boat != null){
-            return true; //Boat hit
-        }
-        return false;
+        return isBoat;
+    }
+
+    public void setBoat(boolean boat) {
+        isBoat = boat;
     }
 
     public Boat getBoat() {
-        return boat;
+        return this.boat;
     }
 
     public boolean isVisible(){
@@ -51,5 +54,15 @@ public class Cell {
     @Override
     public int hashCode() {
         return Objects.hash(coordinateCell, cellStatus, boat);
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+            "coordinateCell=" + coordinateCell +
+            ", cellStatus=" + cellStatus +
+            ", isBoat=" + isBoat +
+            ", boat=" + boat +
+            '}';
     }
 }
