@@ -38,5 +38,21 @@ class GameTest {
 
     @Test
     void testToString() {
+
+        String board = "\nGameBoard: \n" +
+            " 1 : signifie Touché - 0 : signifie loupé et X : signifie vierge \n" +
+            " X  1  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n" +
+            " X  X  X  X  X  X  X  X  X  X \n";
+
+        gameTest.fire("A2");
+        assertEquals(board, gameTest.toString());
     }
 }

@@ -31,6 +31,14 @@ class CoordinatesTest {
     }
 
     @Test
+    void testEquals(){
+        Coordinates coordinatesTestBis = new Coordinates(3,4);
+        Coordinates coordinatesTestNoEquals = new Coordinates(2,4);
+        assertEquals(true, coordinatesTestBis.equals(coordinatesTest));
+        assertEquals(false, coordinatesTestNoEquals.equals(coordinatesTest));
+    }
+
+    @Test
     void testToString() {
         assertEquals("D5", coordinatesTest.toString());
     }
