@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Game {
     final private Board myBoard;
-    private List<Boat> boats = new ArrayList<>();
+    final private List<Boat> boats = new ArrayList<>();
 
     public Game(){
         //creer ses boats
@@ -13,17 +13,13 @@ public class Game {
         Boat boat1 = new Boat(cellsBoats1, 1);
         cellsBoats1.add(new Cell(new Coordinates(0,1), boat1));
         cellsBoats1.add(new Cell(new Coordinates(0,2), boat1));
-
         List<Cell> cellsBoats2 = new ArrayList<>();
         Boat boat2 = new Boat(cellsBoats2, 2);
         cellsBoats2.add(new Cell(new Coordinates(4,1), boat2));
         cellsBoats2.add(new Cell(new Coordinates(4,2), boat2));
-
         boats.add(boat1);
         boats.add(boat2);
-
         myBoard = new Board(boats);
-
     }
 
     public FireResult fire(String coordinatesAlpha){
@@ -69,9 +65,7 @@ public class Game {
             }
             if (i % 10 == 0){
                 boardString = boardString + "\n";
-            }
-
-        }
+            } }
         return  boardString;
     }
 }
