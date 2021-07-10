@@ -1,6 +1,6 @@
 package fr.lernejo.navy_battle;
 
-import com.sun.net.httpserver.HttpServer;
+import fr.lernejo.navy_battle.server.Server;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.concurrent.Delayed;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ServerTest {
     @Test
     public void testStartServer() throws IOException {
-        new Server().startServer(9876);
+        new Server().startServer(9876, null);
         String url = "http://localhost:9876/ping";
         String source = "";
         URL oracle = new URL(url);
@@ -34,8 +33,8 @@ public class ServerTest {
     @Test
     public void testStopServer() throws IOException {
         Server server = new Server();
-        server.startServer(9999);
-        server.stopServer();
+        server.startServer(9999, null);
+        //server.stopServer();
         String url = "http://localhost:9999/ping";
         URL oracle = new URL(url);
         URLConnection yc = oracle.openConnection();
