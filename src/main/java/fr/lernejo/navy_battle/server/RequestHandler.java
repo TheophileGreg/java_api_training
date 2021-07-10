@@ -30,7 +30,6 @@ public class RequestHandler {
     public void sendString(int status, String test) throws IOException {
         byte[] bytes = test.getBytes();
         exchange.sendResponseHeaders(status, bytes.length);
-
         try (OutputStream os = exchange.getResponseBody()) { // (1)
             os.write(bytes);
         }

@@ -9,9 +9,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public abstract class AbstractServer {
-
     private final HttpClient client = HttpClient.newHttpClient();
-
     public JSONObject sendPOSTRequest(String url, JSONObject obj) throws IOException, InterruptedException {
         HttpRequest requetePost = HttpRequest.newBuilder()
             .uri(URI.create(url))
@@ -19,7 +17,6 @@ public abstract class AbstractServer {
             .setHeader("Content-Type", "application/json")
             .POST(HttpRequest.BodyPublishers.ofString(obj.toString()))
             .build();
-
         var response = client.send(requetePost, HttpResponse.BodyHandlers.ofString());
         return new JSONObject(response.body());
     }

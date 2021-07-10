@@ -32,7 +32,7 @@ public class Server extends AbstractServer {
     private void handlePing(HttpExchange exchange) throws IOException {
         String body = "OK";
         exchange.sendResponseHeaders(200, body.length());
-        try (OutputStream os = exchange.getResponseBody()) { // (1)
+        try (OutputStream os = exchange.getResponseBody()) {
             os.write(body.getBytes());
         }
     }
@@ -62,7 +62,6 @@ public class Server extends AbstractServer {
             var response = sendPOSTRequest(server + "/api/game/start", this.localServer.get().toJSON());
             this.remoteServer.set(ServerInfo.fromJSON(response).withURL(server));
             System.out.println("Connect to " + remoteServer.get().getUrl());
-
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Failed");
