@@ -27,7 +27,7 @@ public class ServerTest {
         while ((inputLine = in.readLine()) != null)
             source += inputLine;
         in.close();
-        assertEquals("Hello", source);
+        assertEquals("OK", source);
     }
 
     @Test
