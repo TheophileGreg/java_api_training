@@ -7,34 +7,18 @@ import java.io.IOException;
 public class Launcher {
 
     public static void main(String[] args) {
-//        if (args.length != 1) {
-//            System.exit(-1);
-//        }
-//        int port = Integer.parseInt(args[0]);
-//        Server mainServer;
-//        mainServer = new Server();
-//        try {
-//            mainServer.startServer(port);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-            try {
-                if (args.length != 1) {
-                    System.err.println("Need [port] argument ans maybe {server_url}");
-                    System.exit(-1);
-                }
-
-                int serverPort = Integer.parseInt(args[0]);
-                System.out.println("Serve listen on port " + serverPort);
-
-                new Server().startServer(serverPort, args.length > 1 ? args[1] : null);
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            if (args.length != 1) {
+                System.err.println("Need [port] argument ans maybe {server_url}");
+                System.exit(-1);
             }
-
-//        Game mainBoard = new Game();
+            int serverPort = Integer.parseInt(args[0]);
+            System.out.println("Serve listen on port " + serverPort);
+            new Server().startServer(serverPort, args.length > 1 ? args[1] : null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } }
+    //        Game mainBoard = new Game();
 //        while (mainBoard.getStatus() == GameStatus.onGoing)
 //        {
 //            Scanner keyboard = new Scanner(System.in);
@@ -43,5 +27,4 @@ public class Launcher {
 //            System.out.print("\n Game status : " + mainBoard.getStatus());
 //            System.out.print("\n" + mainBoard);
 //        }
-    }
 }
