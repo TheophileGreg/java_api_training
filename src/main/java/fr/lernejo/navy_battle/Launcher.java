@@ -8,7 +8,7 @@ public class Launcher {
 
     public static void main(String[] args) {
         try {
-            if (args.length != 1) {
+            if (args.length == 0) {
                 System.err.println("Need [port] argument ans maybe {server_url}");
                 System.exit(-1);
             }
