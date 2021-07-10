@@ -30,20 +30,4 @@ public class ServerTest {
         assertEquals("OK", source);
     }
 
-    @Test
-    public void testStopServer() throws IOException {
-        Server server = new Server();
-        server.startServer(9999, null);
-        //server.stopServer();
-        String url = "http://localhost:9999/ping";
-        URL oracle = new URL(url);
-        URLConnection yc = oracle.openConnection();
-        try{
-            new InputStreamReader(
-                yc.getInputStream());
-        }catch(Exception e){
-            System.out.print(e);
-            assertTrue(true);
-        }
-    }
 }
